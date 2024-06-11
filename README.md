@@ -4,9 +4,6 @@
 
 `mkdir dds_dnp3_adapter && cd dds_dnp3_adapter`
 
-
-# tools
-
 # dnp3 library
 
 link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
@@ -18,11 +15,14 @@ link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
 `cd dnp3`
 
 `autoreconf -f -i`
+
 `mkdir build && cd build`
+
 `../configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/`
+
 `make`
 
-sudo cp -r .lib dnp3testset ../TestSetRun/
+`sudo cp -r .lib dnp3testset ../TestSetRun/`
 
 
 # rti_rs_dnp3_adapter: the rti dnp3<->dds adapter
