@@ -6,8 +6,6 @@
 
 # dnp3 library
 
-link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
-
 `sudo apt-get install libboost-all-dev`
 
 `git clone -b bullseye_libboost1_74 https://github.com/ajmhs/dnp3.git`
@@ -28,6 +26,7 @@ link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
 # rti_rs_dnp3_adapter: the rti dnp3<->dds adapter
 
 `cd ../..`
+
 `git clone git@github.com:faroub/rti_rs_dnp3_adapter.git`
 
 # build dnp_message_bus
@@ -35,42 +34,58 @@ link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
 `cd dnp3_message_bus`
 
 `DEBUG=1 \`
+
 `PLATFORM=x64Linux4gcc7.3.0 \`
+
 `DNP3_HOME=../../dnp3 \`
+
 `make`
 
 # build rs_adapter
 
-# Ensure RTI Connext is installed and the NDDSHOME variable is correctly configured
+Ensure RTI Connext is installed and the NDDSHOME variable is correctly configured
 
 `cd ../rs_adapter`
 
 `DEBUG=1 \`
+
 `PLATFORM=x64Linux4gcc7.3.0 \`
+
 `DNP3_HOME=../../dnp3 \`
+
 `NDDS_HOME=$NDDSHOME \`
+
 `ROUTER_HOME=${NDDS_HOME}/bin \`
+
 `make`
 
 
 # test builds
 
-
 `cd ../dnp_message_bus`
 
 `DEBUG=1 \`
+
 `DNP3_HOME=../../dnp3 \`
+
 `PLATFORM=x64Linux4gcc7.3.0 \`
+
 `make test`
 
 `cd ../rs_adapter`
 
 `DDS_DOMAIN=42 \`
+
 `DEBUG=1 \`
+
 `PLATFORM=x64Linux4gcc7.3.0 \`
+
 `DNP3_HOME=../../dnp3 \`
+
 `NDDS_HOME=$NDDSHOME \`
+
 `ROUTER_HOME=${NDDSHOME}/bin \`
+
 `make test`
 
 
