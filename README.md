@@ -11,13 +11,12 @@
 
 link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
 
-# To build the libs:
-
 `sudo apt-get install libboost-all-dev`
 
 `git clone -b bullseye_libboost1_74 https://github.com/ajmhs/dnp3.git`
 
 `cd dnp3`
+
 `autoreconf -f -i`
 `mkdir build && cd build`
 `../configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/`
