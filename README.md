@@ -1,10 +1,10 @@
 # My modification
 =============================================================================
-# create folder for all installations:
+create folder for all installations:
 
 `mkdir dds_dnp3_adapter && cd dds_dnp3_adapter`
 
-# dnp3 library
+dnp3 library
 
 `sudo apt-get install libboost-all-dev`
 
@@ -23,13 +23,13 @@
 `sudo cp -r .lib dnp3testset ../TestSetRun/`
 
 
-# rti_rs_dnp3_adapter: the rti dnp3<->dds adapter
+rti_rs_dnp3_adapter: the rti dnp3<->dds adapter
 
 `cd ../..`
 
 `git clone git@github.com:faroub/rti_rs_dnp3_adapter.git`
 
-# build dnp_message_bus
+build dnp_message_bus
 
 `cd dnp3_message_bus`
 
@@ -41,7 +41,7 @@
 
 `make`
 
-# build rs_adapter
+build rs_adapter
 
 Ensure RTI Connext is installed and the NDDSHOME variable is correctly configured
 
@@ -60,7 +60,7 @@ Ensure RTI Connext is installed and the NDDSHOME variable is correctly configure
 `make`
 
 
-# test builds
+test builds
 
 `cd ../dnp_message_bus`
 
