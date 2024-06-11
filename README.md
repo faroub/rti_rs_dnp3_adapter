@@ -2,7 +2,7 @@
 =============================================================================
 # create folder for all installations:
 
-mkdir dds_dnp3_adapter && cd dds_dnp3_adapter
+`mkdir dds_dnp3_adapter && cd dds_dnp3_adapter`
 
 
 # tools
@@ -13,65 +13,64 @@ link: https://github.com/ajmhs/dnp3/tree/bullseye_libboost1_74
 
 # To build the libs:
 
-sudo apt-get install libboost-all-dev
-git clone -b bullseye_libboost1_74 https://github.com/ajmhs/dnp3.git
-cd dnp3
-autoreconf -f -i
-mkdir build && cd build
-../configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/
-make
+`sudo apt-get install libboost-all-dev`
+`git clone -b bullseye_libboost1_74 https://github.com/ajmhs/dnp3.git`
+`cd dnp3`
+`autoreconf -f -i`
+`mkdir build && cd build`
+`../configure --with-boost-libdir=/usr/lib/x86_64-linux-gnu/`
+`make`
 
 sudo cp -r .lib dnp3testset ../TestSetRun/
 
 
 # rti_rs_dnp3_adapter: the rti dnp3<->dds adapter
 
-
-cd ../..
-
-git clone git@github.com:faroub/rti_rs_dnp3_adapter.git
+`cd ../..`
+`git clone git@github.com:faroub/rti_rs_dnp3_adapter.git`
 
 # build dnp_message_bus
 
-cd dnp3_message_bus
-DEBUG=1 \
-PLATFORM=x64Linux4gcc7.3.0 \
-DNP3_HOME=../../dnp3 \
-make
+`cd dnp3_message_bus`
+
+`DEBUG=1 \`
+`PLATFORM=x64Linux4gcc7.3.0 \`
+`DNP3_HOME=../../dnp3 \`
+`make`
 
 # build rs_adapter
 
 # Ensure RTI Connext is installed and the NDDSHOME variable is correctly configured
 
-cd ../rs_adapter
+`cd ../rs_adapter`
 
-DEBUG=1 \
-PLATFORM=x64Linux4gcc7.3.0 \
-DNP3_HOME=../../dnp3 \
-NDDS_HOME=$NDDSHOME \
-ROUTER_HOME=${NDDS_HOME}/bin \
-make
+`DEBUG=1 \`
+`PLATFORM=x64Linux4gcc7.3.0 \`
+`DNP3_HOME=../../dnp3 \`
+`NDDS_HOME=$NDDSHOME \`
+`ROUTER_HOME=${NDDS_HOME}/bin \`
+`make`
 
 
 # test builds
 
 
-cd ../dnp_message_bus
+`cd ../dnp_message_bus`
 
-DEBUG=1 \
-DNP3_HOME=../../dnp3 \
-PLATFORM=x64Linux4gcc7.3.0 \
-make test
+`DEBUG=1 \`
+`DNP3_HOME=../../dnp3 \`
+`PLATFORM=x64Linux4gcc7.3.0 \`
+`make test`
 
-cd ../rs_adapter
+`cd ../rs_adapter`
 
-DDS_DOMAIN=42 \
- DEBUG=1 \
- PLATFORM=x64Linux4gcc7.3.0 \
- DNP3_HOME=../../dnp3 \
- NDDS_HOME=$NDDSHOME \
- ROUTER_HOME=${NDDSHOME}/bin \
- make test
+`DDS_DOMAIN=42 \`
+`DEBUG=1 \`
+`PLATFORM=x64Linux4gcc7.3.0 \`
+`DNP3_HOME=../../dnp3 \`
+`NDDS_HOME=$NDDSHOME \`
+`ROUTER_HOME=${NDDSHOME}/bin \`
+`make test`
 
 
 
