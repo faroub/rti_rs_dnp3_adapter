@@ -63,6 +63,8 @@ Ensure RTI Connext is installed and the NDDSHOME variable is correctly configure
 
 test builds
 
+test dnp_message_bus
+
 `cd ../dnp_message_bus`
 
 `DEBUG=1 \`
@@ -72,6 +74,8 @@ test builds
 `PLATFORM=x64Linux4gcc7.3.0 \`
 
 `make test`
+
+test rs_adapter
 
 `cd ../rs_adapter`
 
